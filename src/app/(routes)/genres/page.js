@@ -17,7 +17,7 @@ export default function Genres() {
       <div className="flex flex-col items-center">
         {/* DOTS */}
         <div className="flex flex-row justify-center items-center gap-1">
-          <h1 className="     text-3xl text-[#D9D9D9] opacity-50">•</h1>
+          <Link className="text-3xl text-[#D9D9D9] opacity-50 cursor-pointer" href="/mood">•</Link>
           <h1 className="font-bold text-4xl text-[#D9D9D9]">•</h1>
         </div>
 
