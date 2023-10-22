@@ -2,20 +2,20 @@
 
 import { MOODS } from "@/constants/constants";
 import axios from "axios";
-import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const parseSpotifyResponse = (recs) => {
   const tracks = recs.map((rec) => {
     return {
+      id: rec['id'],
       url: rec['external_urls']['spotify'],
       name: rec['name'], 
       image: rec['album']['images'][0]['url'],
     }
   });
 
-  return tracks;
+  return tracks.slice(0, 21);
 }
 
 export default function Generate() {
@@ -74,14 +74,15 @@ export default function Generate() {
   
         const res = await axios.get('https://api.spotify.com/v1/search', {
           params: {
-            query: `mood:${mood}`,
+            query: `${MOODS[mood].name}`,
             type: "track",
-            limit: "50"
+            limit: "21"
           },
           headers: {
             'Authorization': 'Bearer ' + token
           }
         })
+
         const body = res.data
         const tracks = body.tracks
         resolve(tracks.items)
@@ -102,9 +103,7 @@ export default function Generate() {
           { tracks.map((track, index) => {
               return (
                 <div key={index} className="flex flex-col justify-center items-center gap-5">
-                  <img src={ track.image } width="50" height="50" />
-                  <h1 className="text-white">{ track.name }</h1>
-                  <a href={ track.url } target="_blank" className="text-white text-2xl font-bold">Listen</a>
+                  <iframe src={`https://open.spotify.com/embed/track/${track.id}`} width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                 </div>
               )
             })
