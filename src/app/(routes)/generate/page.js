@@ -1,5 +1,6 @@
 "use client";
 
+import { MOODS } from "@/constants/constants";
 import axios from "axios";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
@@ -94,7 +95,7 @@ export default function Generate() {
     <main className="flex flex-row justify-center items-center">
       <div className="flex flex-col items-center">
         {/* TITLE */}
-        <h1 className="mt-5 text-white text-5xl font-bold">Your generated playlist</h1>
+        <h1 className="mt-5 text-white text-4xl font-bold">Your {MOODS[mood].name} playlist </h1>
 
         {/* PLAYLIST */}
         <div className="mt-10 grid grid-cols-3 gap-5">
