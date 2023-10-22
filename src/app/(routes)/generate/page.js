@@ -8,8 +8,6 @@ export default function Generate() {
   const mood = searchParams.get('mood');
   const genres = searchParams.getAll('genres');
 
-  console.log(genres);
-
   return (
     <main className="flex flex-row justify-center items-center h-screen">
       <div className="flex flex-col items-center">

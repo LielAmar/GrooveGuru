@@ -2,11 +2,16 @@
 
 import { MOODS } from "@/constants/constants";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useState } from "react"
 
 export default function Mood() {
-  const [mood, setMood] = useState(0);
+  const searchParams = useSearchParams()
 
+  const queryMood = searchParams.get('mood');
+  
+  const [mood, setMood] = useState(queryMood ?? 0);
+  
   return (
     <main className="flex flex-row justify-center items-center h-screen">
       <div className="flex flex-col items-center">
