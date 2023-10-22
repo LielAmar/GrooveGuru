@@ -4,6 +4,7 @@ import { MOODS } from "@/constants/constants";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react"
+import CircularSlider from '@fseehawer/react-circular-slider';
 
 export default function Mood() {
   const searchParams = useSearchParams()
@@ -25,12 +26,24 @@ export default function Mood() {
         <h1 className="mt-5 text-white text-5xl font-bold">How are you feeling today?</h1>
 
         {/* MOODS */}
-        <div className="mt-20 flex gap-5 bg-[#3E444E] rounded-3xl">
-          { MOODS.map((m, index) => 
-              <div key={index} className={`text-8xl p-5 ${mood == index ? "bg-[#00A5C9] rounded-3xl" : ""} cursor-pointer`}
-                onClick={ () => setMood(index) }
-              >{ m.emoji }</div>
-          )}
+        <div className="mt-20 flex gap-5 rounded-3xl">
+          <CircularSlider
+            width={200}
+            progressLineCap="flat"
+            dataIndex={1}
+            label=" "
+            data={ MOODS.map(m => m.emoji) }
+            valueFontSize="6rem"
+            verticalOffset="1rem"
+            knobColor="#00bfbd"
+            progressColorFrom="#00bfbd"
+            progressColorTo="#005a58"
+            progressSize={8}
+            // trackColor="#eeeeee"
+            trackSize={4}
+          >
+            {/* <EmojiIcon x="9" y="9" width="18px" height="18px" /> */}
+          </CircularSlider>
         </div>
 
         {/* BUTTON */}

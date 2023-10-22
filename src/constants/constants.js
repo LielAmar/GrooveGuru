@@ -1,9 +1,9 @@
 export const MOODS = [
-  { name: "Happy", emoji: "😃" },
   { name: "Excited", emoji: "🥳" },
-  { name: "Bored", emoji: "😒" },
-  { name: "Sad", emoji: "😭" },
+  { name: "Happy", emoji: "😃" },
   { name: "Tired", emoji: "🥱" },
+  { name: "Sad", emoji: "😭" },
+  { name: "Bored", emoji: "😒" },
   { name: "Angry", emoji: "😡" }
 ]
  
