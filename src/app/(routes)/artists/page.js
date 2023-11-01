@@ -22,7 +22,7 @@ export default function Artists() {
         </div>
 
         {/* TITLE */}
-        <h1 className="mt-5 text-white text-5xl font-bold">What do you like listening to?</h1>
+        <h1 className="mt-5 text-white text-5xl font-bold">Who do you like listening to?</h1>
 
         {/* ARTISTS */}
         <div className="mt-20 grid gap-10 grid-cols-5">
