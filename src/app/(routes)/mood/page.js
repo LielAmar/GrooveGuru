@@ -7,11 +7,8 @@ import { useState } from "react"
 import CircularSlider from '@fseehawer/react-circular-slider';
 
 export default function Mood() {
-  const searchParams = useSearchParams()
 
-  const queryMood = searchParams.get('mood');
-  
-  const [mood, setMood] = useState(queryMood ?? 0);
+  const [mood, setMood] = useState(MOODS[0]);
   
   return (
     <main className="flex flex-row justify-center items-center h-screen">
@@ -32,7 +29,8 @@ export default function Mood() {
             progressLineCap="flat"
             dataIndex={1}
             label=" "
-            data={ MOODS.map(m => m.emoji) }
+            data={MOODS.map(m => m.emoji)}
+            onChange={(emoji) => setMood(MOODS.find((m) => m.emoji === emoji))}
             valueFontSize="6rem"
             verticalOffset="1rem"
             knobColor="#00bfbd"
@@ -48,7 +46,7 @@ export default function Mood() {
 
         {/* BUTTON */}
         <Link className="mt-20 bg-[#575B71] hover:bg-[#495073] text-center duration-300 text-white font-bold text-4xl p-5 w-1/2 cursor-pointer rounded-lg"
-            href={{ pathname: '/genres', query: { mood: mood } }}>
+            href={{ pathname: '/genres', query: { mood: mood.name } }}>
           NEXT
         </Link>
       </div>
